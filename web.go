@@ -1,6 +1,6 @@
-package snow
+package snowjs
 
-//go:generate go-bindata-assetfs -pkg snow static/...
+//go:generate go-bindata-assetfs -pkg snowjs static/...
 
 /* VERSION 0.0.1 Host Libraries:
  * lib/
