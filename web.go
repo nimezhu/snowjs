@@ -64,9 +64,6 @@ func FontHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddHandlers(router *mux.Router, root string) error {
-	if root == nil {
-		root = ""
-	}
 	router.HandleFunc(root+"/lib/{file}", JsHandler)
 	router.HandleFunc(root+"/css/{file}", CssHandler)
 	router.HandleFunc(root+"/fonts/{file}", FontHandler)
