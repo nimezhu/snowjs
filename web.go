@@ -1,6 +1,6 @@
-package snowjs
+package snow
 
-//go:generate go-bindata-assetfs -pkg snowjs static/...
+//go:generate go-bindata-assetfs -pkg snow static/...
 
 /* VERSION 0.0.1 Host Libraries:
  * lib/
@@ -61,4 +61,14 @@ func FontHandler(w http.ResponseWriter, r *http.Request) {
 		log.Println(err)
 	}
 	io.WriteString(w, string(bytes))
+}
+
+func AddHandlers(router *mux.Router, root string) error {
+	if root == nil {
+		root = ""
+	}
+	router.HandleFunc(root+"/lib/{file}", JsHandler)
+	router.HandleFunc(root+"/css/{file}", CssHandler)
+	router.HandleFunc(root+"/fonts/{file}", FontHandler)
+	return nil
 }
