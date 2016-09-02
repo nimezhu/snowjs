@@ -1,36 +1,38 @@
 package snow
+
 //go:generate go-bindata-assetfs -pkg snow static/...
 
-const (
-	VERSION = "0.0.1"
-)
 /* VERSION 0.0.1 Host Libraries:
  * lib/
- *     angular.min.js  
- *	   bootstrap.min.js    
- *     d3.v3.min.js   
+ *     angular.min.js
+ *	   bootstrap.min.js
+ *     d3.v3.min.js
  *     list.min.js
- *	   app.min.js      
- *     d3-queue.v2.min.js  
+ *	   app.min.js
+ *     d3-queue.v2.min.js
  *     jquery.min.js
- * css/ 
- *    AdminLTE.min.css  
- *    bootstrap.min.css  
+ * css/
+ *    AdminLTE.min.css
+ *    bootstrap.min.css
  *    skin-black.min.css
  * fonts/
- *  glyphicons-halflings-regular.eot  
+ *  glyphicons-halflings-regular.eot
  *	glyphicons-halflings-regular.woff
- *	glyphicons-halflings-regular.svg  
+ *	glyphicons-halflings-regular.svg
  *	glyphicons-halflings-regular.woff2
  *	glyphicons-halflings-regular.ttf
  */
+
 import (
-	"html/template"
 	"io"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
+)
+
+const (
+	VERSION = "0.0.1"
 )
 
 func CssHandler(w http.ResponseWriter, r *http.Request) {
@@ -60,4 +62,3 @@ func FontHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	io.WriteString(w, string(bytes))
 }
-
