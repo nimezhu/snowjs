@@ -1,4 +1,4 @@
-package snow
+package snowjs
 
 //go:generate go-bindata-assetfs -pkg snow static/...
 
