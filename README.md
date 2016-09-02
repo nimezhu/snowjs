@@ -1,6 +1,7 @@
 # snowjs
 
 ## Usage Example
+
 ```
 import github.com/nimezhu/snowjs
 
@@ -11,3 +12,7 @@ func addStaticHandles(router *mux.Router) error {
 	return nil
 }
 ```
+```
+snowjs.AddHandlers(router)
+```
+
