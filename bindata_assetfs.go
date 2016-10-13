@@ -18,7 +18,7 @@
 // static/lib/list.min.js
 // DO NOT EDIT!
 
-package snow
+package snowjs
 
 import (
 	"github.com/elazarl/go-bindata-assetfs"
