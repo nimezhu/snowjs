@@ -3,6 +3,7 @@ cat snow.tools.js\
     snow.config.js\
     snow.panel.js\
     snow.chart.*.js\
+    snow.fig.js\
     > snow.js
 
 minify snow.js > ../../static/lib/snow.min.js
