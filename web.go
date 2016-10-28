@@ -27,6 +27,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"path"
 
 	"github.com/gorilla/mux"
 )
@@ -62,10 +63,36 @@ func FontHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	io.WriteString(w, string(bytes))
 }
+func pluginHandler(w http.ResponseWriter, r *http.Request) {
+	ps := mux.Vars(r)
+	bytes, err := Asset("static/plugins/" + ps["file"])
+	if err != nil {
+		log.Println(err)
+	}
+	switch ext := path.Ext(ps["file"]); ext {
+	case ".css":
+		w.Header().Add("Content-Type", "text/css")
+		io.WriteString(w, string(bytes))
+	case ".js":
+		w.Header().Add("Content-Type", "text/JavaScript")
+		io.WriteString(w, string(bytes))
+	case ".png":
+		w.Header().Add("Content-Type", "image/png")
+		w.Write(bytes)
+	case ".jpeg":
+		w.Header().Add("Content-Type", "image/jpeg")
+		w.Write(bytes)
+	case ".jpg":
+		w.Header().Add("Content-Type", "image/jpeg")
+		w.Write(bytes)
+	}
+
+}
 
 func AddHandlers(router *mux.Router, root string) error {
 	router.HandleFunc(root+"/lib/{file}", JsHandler)
 	router.HandleFunc(root+"/css/{file}", CssHandler)
 	router.HandleFunc(root+"/fonts/{file}", FontHandler)
+	router.HandleFunc(root+"/plugins/{file:.*}", pluginHandler)
 	return nil
 }
