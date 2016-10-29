@@ -1,6 +1,6 @@
 package snowjs
 
-//go:generate go-bindata-assetfs -pkg snowjs static/...
+//go:generate go-bindata-assetfs -pkg snowjs static/... templates/...
 
 /* VERSION 0.0.1 Host Libraries:
  * lib/
