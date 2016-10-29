@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
  -->
 
-  <link rel="stylesheet" href="/local/css/newsnow.css">
+  <link rel="stylesheet" href="/css/snow.css">
   <script src="/lib/d3.v3.min.js"></script>
   <script src="/lib/jquery.min.js"></script>
   <script src="/lib/bootstrap.min.js"></script>
