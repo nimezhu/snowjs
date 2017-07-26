@@ -38,6 +38,7 @@ const (
 
 func CssHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "text/css")
+	w.Header().Add("Vary", "Accept-Encoding")
 	ps := mux.Vars(r)
 	bytes, err := Asset("static/css/" + ps["file"])
 	if err != nil {
@@ -47,6 +48,7 @@ func CssHandler(w http.ResponseWriter, r *http.Request) {
 }
 func JsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "text/JavaScript")
+	w.Header().Add("Vary", "Accept-Encoding")
 	ps := mux.Vars(r)
 	bytes, err := Asset("static/lib/" + ps["file"])
 	if err != nil {
@@ -56,6 +58,7 @@ func JsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func FontHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Vary", "Accept-Encoding")
 	ps := mux.Vars(r)
 	bytes, err := Asset("static/fonts/" + ps["file"])
 	if err != nil {
@@ -66,6 +69,7 @@ func FontHandler(w http.ResponseWriter, r *http.Request) {
 func pluginHandler(w http.ResponseWriter, r *http.Request) {
 	ps := mux.Vars(r)
 	bytes, err := Asset("static/plugins/" + ps["file"])
+	w.Header().Add("Vary", "Accept-Encoding")
 	if err != nil {
 		log.Println(err)
 	}
