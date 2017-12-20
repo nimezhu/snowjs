@@ -100,3 +100,15 @@ func AddHandlers(router *mux.Router, root string) error {
 	router.HandleFunc(root+"/plugins/{file:.*}", pluginHandler)
 	return nil
 }
+func AddSnowJs(h http.Handler, root string) http.Handler {
+	router := mux.NewRouter()
+	AddHandlers(router, root)
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		match := &mux.RouteMatch{}
+		if router.Match(r, match) {
+			router.ServeHTTP(w, r)
+		} else {
+			h.ServeHTTP(w, r)
+		}
+	})
+}
